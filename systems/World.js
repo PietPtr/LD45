@@ -50,6 +50,12 @@ class World {
         this.scenes['world'].add(this.sunlight.target);
         this.scenes['world'].add(this.sunlight);
 
+        var geometry = new THREE.BoxGeometry( 10, 10, 10 );
+        var material = new THREE.MeshBasicMaterial( {color: 0x637470} );
+        this.portal = new THREE.Mesh( geometry, material );
+        this.portal.position.copy(PORTALPOS);
+        world.scene().add( this.portal );
+
         // ---------------------------------------
 
         var lastTimeMsec = null
@@ -102,6 +108,4 @@ class World {
     onFrame(dt, time) {
         this.clock.tick(dt);
     }
-
-
 }

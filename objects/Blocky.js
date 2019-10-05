@@ -22,7 +22,10 @@ class Blocky {
             this.velocity.x = Math.min(maxSpeed, Math.abs(this.velocity.x) + dt * WALK_ACC) * Math.sign(direction.x);
         }
         if (direction.y != 0) {
-            this.velocity.z = Math.min(maxSpeed, Math.abs(this.velocity.z) + dt * WALK_ACC) * Math.sign(direction.y);
+            this.velocity.y = Math.min(maxSpeed, Math.abs(this.velocity.y) + dt * WALK_ACC) * Math.sign(direction.y);
+        }
+        if (direction.z != 0) {
+            this.velocity.z = Math.min(maxSpeed, Math.abs(this.velocity.z) + dt * WALK_ACC) * Math.sign(direction.z);
         }
     }
 
