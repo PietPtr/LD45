@@ -12,8 +12,8 @@ function loadMTL(name) {
         path.pop();
         let folder = path.join("/") + "/";
 
-        loader.setTexturePath('/resources/models/obj/' + folder);
-        loader.setPath('/resources/models/obj/');
+        loader.setTexturePath('/resources/obj/' + folder);
+        loader.setPath('/resources/obj/');
 
         return loader.load(name + '.mtl', resolve);
     })
@@ -23,7 +23,7 @@ function loadOBJ(name, materials) {
     return new Promise(resolve => {
         let loader = new THREE.OBJLoader();
         loader.setMaterials(materials);
-        loader.setPath('/resources/models/obj/');
+        loader.setPath('/resources/obj/');
 
         return loader.load(name + '.obj', resolve);
     })

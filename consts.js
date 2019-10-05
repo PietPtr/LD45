@@ -1,14 +1,10 @@
+
 const DEBUG_LIGHTS = true;
 
 const TO_RAD = Math.PI/180;
 const TO_DEG = 180 / Math.PI;
 const G = 6.67408e-11;
 
-const FALL_SPEED = 109.81;
-const WALK_ACC = 700;
-
-const CAM_START_POS = new THREE.Vector3(0, 0, 200);
-const PORTALPOS = new THREE.Vector3(140, 40, -337);
 
 // Button indices
 const A_BTN = 0;

@@ -25,7 +25,7 @@ class ResourceManager {
     }
 
     loadModels() {
-        const modelNames = ['plus'];
+        const modelNames = ['backwheels', 'chassis', 'cop', 'dude', 'engine', 'frame', 'frontwheels', 'top'];
 
         const meshes = {};
 

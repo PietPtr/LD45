@@ -15,10 +15,6 @@ class World {
 
             this.clock = new Clock(2800000000000);
 
-            this.keys = {};
-            window.addEventListener('keyup', function(e) { world.keys[e.code] = false; });
-            window.addEventListener('keydown', function(e) { world.keys[e.code] = true; });
-
             World.instance = this;
         }
 
@@ -32,7 +28,7 @@ class World {
         this.scenes['world'].updateMatrixWorld(true);
 
         if (DEBUG_LIGHTS) {
-            let light = new THREE.AmbientLight( 0x677873 );
+            let light = new THREE.AmbientLight( 0x666666 );
             this.scenes['world'].add( light );
         }
 
@@ -44,17 +40,16 @@ class World {
 
         // ---- set up all world objects here ----
 
-        this.sunlight = new THREE.DirectionalLight( 0x6a7b76, 1 );
-        this.sunlight.position.set(1000, 0, 0);
-        this.sunlight.target.position.set(-1000, 0, -1000);
+        this.sunlight = new THREE.DirectionalLight( 0xffffff, 1 );
+        this.sunlight.position.set(10, 0, 0);
+        this.sunlight.target.position.set(0, 0, 0);
         this.scenes['world'].add(this.sunlight.target);
         this.scenes['world'].add(this.sunlight);
 
-        var geometry = new THREE.BoxGeometry( 10, 10, 10 );
-        var material = new THREE.MeshBasicMaterial( {color: 0x637470} );
-        this.portal = new THREE.Mesh( geometry, material );
-        this.portal.position.copy(PORTALPOS);
-        world.scene().add( this.portal );
+        var geometry = new THREE.TorusKnotGeometry( 10, 3, 100, 64 );
+        var material = new THREE.MeshPhongMaterial( { color: 0xff6400 } );
+        var torusKnot = new THREE.Mesh( geometry, material );
+        this.scenes['world'].add( torusKnot );
 
         // ---------------------------------------
 
@@ -101,11 +96,9 @@ class World {
         return this.scenes[this.activeScene];
     }
 
-    loop() {
-        return this.gameloops[this.activeLoop];
-    }
-
     onFrame(dt, time) {
         this.clock.tick(dt);
     }
+
+
 }
