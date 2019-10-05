@@ -53,7 +53,7 @@ class ResourceManager {
     }
 
     loadTextures() {
-        const textureNames = [];
+        const textureNames = ['collision.png'];
 
         const maps = {};
 

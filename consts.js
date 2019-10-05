@@ -6,6 +6,7 @@ const TO_DEG = 180 / Math.PI;
 const G = 6.67408e-11;
 const UP = new THREE.Vector3(0, 1, 0);
 const ROAD_WIDTH = 20;
+const GRASS_MODIFIER = 0.8;
 
 // Button indices
 const A_BTN = 0;

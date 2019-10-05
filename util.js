@@ -47,7 +47,7 @@ function loadModel(name) {
 
 function loadTexture(name) {
     return new Promise(resolve => {
-        new THREE.TextureLoader().load("/resources/textures/" + name, resolve);
+        new THREE.TextureLoader().load("/resources/images/" + name, resolve);
     });
 }
 
@@ -166,4 +166,29 @@ function getFloatFromId(id) {
         return 0;
     }
     return result;
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function win() {
+    world.loop().player.addItem({type: 'chassis'});
+    world.loop().player.speed += 15;
+    await sleep(500);
+    world.loop().player.addItem({type: 'frontwheels'});
+    world.loop().player.speed += 15;
+    await sleep(500);
+    world.loop().player.addItem({type: 'backwheels'});
+    world.loop().player.speed += 15;
+    await sleep(500);
+    world.loop().player.addItem({type: 'engine'});
+    world.loop().player.speed += 15;
+    await sleep(500);
+    world.loop().player.addItem({type: 'frame'});
+    world.loop().player.speed += 15;
+    await sleep(500);
+    world.loop().player.addItem({type: 'top'});
+    world.loop().player.speed += 15;
+
 }

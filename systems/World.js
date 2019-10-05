@@ -15,6 +15,8 @@ class World {
 
             this.clock = new Clock(2800000000000);
 
+            this.strips = [];
+
             this.keys = {};
             window.addEventListener('keyup', function(e) { world.keys[e.code] = false; });
             window.addEventListener('keydown', function(e) { world.keys[e.code] = true; });
@@ -51,6 +53,7 @@ class World {
         this.scenes['world'].add(this.sunlight);
 
         this.strips.push(new WorldStrip(0));
+        this.strips.push(new WorldStrip(1000));
 
         // ---------------------------------------
 
