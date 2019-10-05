@@ -25,12 +25,24 @@ class ResourceManager {
     }
 
     loadModels() {
-        const modelNames = ['backwheels', 'chassis', 'cop', 'dude', 'engine', 'frame', 'frontwheels', 'top'];
+        const modelNames = ['backwheels', 'chassis', 'cop', 'dude', 'engine', 'frame', 'frontwheels', 'top', 'tree1'];
 
         const meshes = {};
 
         const modelPromises = modelNames.map(name => {
             return loadModel(name).then(mesh => {
+                let fixMaterial = (material) => {
+                    return new THREE.MeshBasicMaterial({ color: material.color, side: THREE.DoubleSide })
+                }
+
+                try {
+                    for (let i = 0; i < mesh.children[0].material.length; i++) {
+                        mesh.children[0].material[i] = fixMaterial(mesh.children[0].material[i]);
+                    }
+                } catch (e) {
+                    mesh.children[0].material = fixMaterial(mesh.children[0].material);
+                }
+
                 meshes[name] = mesh;
             });
         });
@@ -57,7 +69,7 @@ class ResourceManager {
     }
 
     loadFonts() {
-        const fontNames = ['optimer_regular'];
+        const fontNames = [];
 
         const fonts = {};
 

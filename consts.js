@@ -4,7 +4,8 @@ const DEBUG_LIGHTS = true;
 const TO_RAD = Math.PI/180;
 const TO_DEG = 180 / Math.PI;
 const G = 6.67408e-11;
-
+const UP = new THREE.Vector3(0, 1, 0);
+const ROAD_WIDTH = 20;
 
 // Button indices
 const A_BTN = 0;

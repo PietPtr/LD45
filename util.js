@@ -5,6 +5,10 @@ function random() {
     return x - Math.floor(x);
 }
 
+function randint(min, max) {
+    return Math.round(Math.random() * (max - min) + min);
+}
+
 function loadMTL(name) {
     return new Promise(resolve => {
         let loader = new THREE.MTLLoader();

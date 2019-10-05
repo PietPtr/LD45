@@ -15,6 +15,10 @@ class World {
 
             this.clock = new Clock(2800000000000);
 
+            this.keys = {};
+            window.addEventListener('keyup', function(e) { world.keys[e.code] = false; });
+            window.addEventListener('keydown', function(e) { world.keys[e.code] = true; });
+
             World.instance = this;
         }
 
@@ -46,10 +50,7 @@ class World {
         this.scenes['world'].add(this.sunlight.target);
         this.scenes['world'].add(this.sunlight);
 
-        var geometry = new THREE.TorusKnotGeometry( 10, 3, 100, 64 );
-        var material = new THREE.MeshPhongMaterial( { color: 0xff6400 } );
-        var torusKnot = new THREE.Mesh( geometry, material );
-        this.scenes['world'].add( torusKnot );
+        this.strips.push(new WorldStrip(0));
 
         // ---------------------------------------
 
@@ -94,6 +95,10 @@ class World {
 
     scene() {
         return this.scenes[this.activeScene];
+    }
+
+    loop() {
+        return this.gameloops[this.activeLoop];
     }
 
     onFrame(dt, time) {

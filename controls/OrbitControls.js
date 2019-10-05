@@ -283,6 +283,8 @@ THREE.OrbitControls = function ( object, domElement ) {
 		phiDelta = 0;
 		scale = 1;
 		pan.set( 0, 0, 0 );
+		this.phi = phi;
+		this.theta = theta;
 
 		if ( lastPosition.distanceToSquared( this.object.position ) > EPS ) {
 
