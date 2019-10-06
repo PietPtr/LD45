@@ -151,6 +151,7 @@ class Gameloop {
 
                 document.getElementById('youwon1').style.opacity = 0.5;
                 document.getElementById('youwon2').style.opacity = 1;
+                document.getElementById('score').innerHTML = Math.round((new Date() - this.player.startChase) / 100) / 10;
             }
         } else if (this.gamestate == 'End') {
             this.player.onFrame(dt, time);
